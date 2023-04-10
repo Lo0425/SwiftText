@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/ChatAppPaddington" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DataBinding" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/FileManager" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Gallery" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MobileSem1FinalProject" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ProductCatalogue" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ProductCatalogue-FireBase" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ProjectTodoList" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TodoListFragments2.0" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ViewPagerwithTabLayout" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/WordPad_Project" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/firebaseChat" vcs="Git" />
+  </component>
+</project>

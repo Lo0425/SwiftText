@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "697958282523",
+    "project_id": "swifttext-6e7a8",
+    "storage_bucket": "swifttext-6e7a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697958282523:android:9070cacbb4d45af27b8fbe",
+        "android_client_info": {
+          "package_name": "com.example.swifttext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697958282523-5uoqacq01reh1h98mfmc994t7tf9c346.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCQF-JEsmYLgei75DwdLqtW3KLaDQWoVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697958282523-5uoqacq01reh1h98mfmc994t7tf9c346.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
