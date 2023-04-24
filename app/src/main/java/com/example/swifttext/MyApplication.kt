@@ -19,6 +19,7 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
+
         CoroutineScope(Dispatchers.IO).launch {
             val res = authService.getCurrentUser()
             username = res?.username

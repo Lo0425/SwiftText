@@ -2,6 +2,8 @@ package com.example.swifttext.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.swifttext.data.repositories.FireStoreRulesRepository
+import com.example.swifttext.domain.repository.RulesRepository
 import com.example.swifttext.data.repositories.UserRepositoryImpl
 import com.example.swifttext.domain.repository.UserRepository
 import com.example.swifttext.service.AuthService
@@ -55,6 +57,12 @@ object MyAppDependency {
     @Singleton
     fun provideUserRepository(db: FirebaseFirestore): UserRepository {
         return UserRepositoryImpl(db.collection("users"))
+    }
+
+    @Provides
+    @Singleton
+    fun provideRulesRepository(db: FirebaseFirestore): RulesRepository {
+        return FireStoreRulesRepository(db.collection("rules"))
     }
 
 

@@ -1,11 +1,9 @@
 package com.example.swifttext.ui.presentation.login.viewModel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.swifttext.common.Resource
 import com.example.swifttext.data.model.User
 import com.example.swifttext.domain.usecase.LoginUseCase
-import com.example.swifttext.service.AuthService
 import com.example.swifttext.ui.presentation.base.viewModel.BaseViewModel
 import com.example.swifttext.ui.presentation.login.LoginEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,30 +17,34 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
-): BaseViewModel(){
+) : BaseViewModel() {
     val loginFinish: MutableSharedFlow<Unit> = MutableSharedFlow()
     val email: MutableStateFlow<String> = MutableStateFlow("")
     val password: MutableStateFlow<String> = MutableStateFlow("")
 
     fun login() {
-        loginUseCase(
-            LoginEvent.Login(
-                User(email = email.value, password = password.value)
-            )
-        ).onEach {
-            when (it) {
-                is Resource.Loading -> {
 
-                }
+        viewModelScope.launch {
 
-                is Resource.Success -> {
-                    loginFinish.emit(Unit)
-                }
+            loginUseCase(
+                LoginEvent.Login(
+                    User(email = email.value, password = password.value)
+                )
+            ).onEach {
+                when (it) {
+                    is Resource.Loading -> {
 
-                is Resource.Error -> {
-                    error.emit(it.message!!)
+                    }
+
+                    is Resource.Success -> {
+                        loginFinish.emit(Unit)
+                    }
+
+                    is Resource.Error -> {
+                        error.emit(it.message!!)
+                    }
                 }
-            }
-        }.launchIn(viewModelScope)
+            }.launchIn(viewModelScope)
+        }
     }
 }

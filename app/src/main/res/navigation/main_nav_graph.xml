@@ -8,7 +8,7 @@
         android:id="@+id/loginFragment"
         android:name="com.example.swifttext.ui.presentation.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -21,19 +21,42 @@
         android:name="com.example.swifttext.ui.presentation.signup.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
-    <action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment" />
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.swifttext.ui.presentation.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_combinationFragment"
             app:destination="@id/combinationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editCombinationFragment"
+            app:destination="@id/editCombinationFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/combinationFragment"
         android:name="com.example.swifttext.ui.presentation.combintation.CombinationFragment"
         android:label="fragment_combination"
-        tools:layout="@layout/fragment_combination" />
+        tools:layout="@layout/fragment_combination">
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
+
+
+    <fragment
+        android:id="@+id/editCombinationFragment"
+        android:name="com.example.swifttext.ui.presentation.editCombination.EditCombinationFragment"
+        android:label="EditCombinationFragment"
+        tools:layout="@layout/fragment_edit_combination">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

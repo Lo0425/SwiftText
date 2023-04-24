@@ -13,5 +13,6 @@
     <color name="green_blue">#1768AC</color>
     <color name="aero">#06BEE1</color>
     <color name="aero_hint">#8006BEE1</color>
+    <color name="red">#EE3D16</color>
 
 </resources>

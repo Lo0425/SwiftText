@@ -1,5 +1,6 @@
 package com.example.swifttext.ui.presentation.signup.viewModel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.swifttext.data.model.User
 import com.example.swifttext.service.AuthService
@@ -20,19 +21,26 @@ class SignUpViewModel @Inject constructor(private val authRepo: AuthService) : B
     val retypePassword: MutableStateFlow<String> = MutableStateFlow("")
 
     fun signUp() {
-        if (Utils.validate(username.value, email.value, password.value, retypePassword.value)) {
-            viewModelScope.launch {
-                safeApiCall {
-                    authRepo.createUser(
-                        User(
-                            username.value,
-                            email.value,
-                            password.value,
-                            retypePassword.value
+        if (Utils.validate(username.value, email.value, password.value,retypePassword.value)) {
+            if(password.value == retypePassword.value) {
+
+                viewModelScope.launch {
+                    safeApiCall {
+                        authRepo.createUser(
+                            User(
+                                username = username.value,
+                                email = email.value,
+                                password = password.value,
+                                password2 = retypePassword.value
+                            )
                         )
-                    )
+                    }
+                    finish.emit(Unit)
                 }
-                finish.emit(Unit)
+            }else{
+                viewModelScope.launch {
+                    error.emit("Password and retyped-password are not match")
+                }
             }
         } else {
             viewModelScope.launch {

@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 
 abstract class BaseViewModel : ViewModel() {
     val error: MutableSharedFlow<String> = MutableSharedFlow()
+
     open fun onViewCreated() {
 
     }

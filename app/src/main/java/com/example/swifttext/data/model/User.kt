@@ -6,7 +6,6 @@ data class User(
     val email: String = "",
     val password: String = "",
     val password2:String = ""
-
     ){
     override fun hashCode(): Int {
         var result = id.hashCode() ?: 0

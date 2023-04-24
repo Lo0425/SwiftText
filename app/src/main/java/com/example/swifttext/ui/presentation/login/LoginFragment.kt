@@ -8,7 +8,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
 import com.example.swifttext.R
 import com.example.swifttext.databinding.FragmentLoginBinding
 import com.example.swifttext.ui.presentation.base.BaseFragment
@@ -23,16 +22,21 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun onBindView(view: View, savedInstanceState: Bundle?) {
         super.onBindView(view, savedInstanceState)
+        binding?.viewModel = viewModel
+        binding?.lifecycleOwner = viewLifecycleOwner
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.hide()
+
+
+        binding?.btnLogin?.setOnClickListener {
+            Log.d("debugging", "Logging in")
+            viewModel.login()
+        }
 
 
         var counter = 0;
 
         binding?.run {
-            binding?.viewModel = viewModel
-            binding?.lifecycleOwner = viewLifecycleOwner
-
             btnShowPassword.setOnClickListener {
                 if(counter == 0){
                     etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance();
@@ -44,15 +48,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     counter = 0
                 }
             }
-
-
-            btnLogin.setOnClickListener {
-                Log.d("debugging", "Logging in")
-                viewModel?.login()
-
-            }
-
-
 
 
 

@@ -15,7 +15,7 @@ class LoginUseCase @Inject constructor(
         try{
             when(event){
                 is LoginEvent.Login -> {
-                    val (_, _, pass,email) = event.user
+                    val (_, _, email,pass) = event.user
                     if (Utils.validate()) {
                         emit(Resource.Loading(true))
                         val res = authService.login(email, pass)

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
         <variable
             name="viewModel"
@@ -46,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="E-mail"
+                android:text="@={viewModel.email}"
                 android:textColor="@color/aero"
                 android:textColorHint="@color/aero_hint"
                 android:textSize="20sp"
@@ -78,6 +78,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="Password"
+                android:text="@={viewModel.password}"
                 android:inputType="textPassword"
                 android:textColor="@color/aero"
                 android:textColorHint="@color/aero_hint"
@@ -100,6 +101,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="150dp"
             android:background="@drawable/button"
+            android:onClick="@{()->viewModel.login()}"
             android:text="Login"
             android:textAllCaps="false"
             android:textColor="@color/white"
