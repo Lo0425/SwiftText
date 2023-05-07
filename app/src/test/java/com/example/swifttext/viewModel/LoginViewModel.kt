@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.swifttext.domain.usecase.LoginUseCase
 import com.example.swifttext.service.AuthService
 import com.example.swifttext.ui.presentation.login.viewModel.LoginViewModel
-import junit.framework.TestCase
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -50,7 +49,7 @@ class LoginViewModelTest {
     @Test
     fun `user should not be able to login with the wrong credentials`() = runTest {
         Mockito.`when`(authRepo.login("abcabc.com", "qweqweqwe")).thenReturn(false)
-        loginViewModel.email.value = "abc@abc.com"
+        loginViewModel.email.value = "abcabc.com"
         loginViewModel.password.value = "qweqweqwe"
         loginViewModel.login()
 

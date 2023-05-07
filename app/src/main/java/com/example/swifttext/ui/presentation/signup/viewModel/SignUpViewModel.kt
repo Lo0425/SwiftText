@@ -1,11 +1,13 @@
 package com.example.swifttext.ui.presentation.signup.viewModel
 
 import android.util.Log
+import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.viewModelScope
 import com.example.swifttext.data.model.User
 import com.example.swifttext.service.AuthService
 import com.example.swifttext.ui.presentation.base.viewModel.BaseViewModel
 import com.example.swifttext.utils.Utils
+import com.example.swifttext.utils.ValidationUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +21,8 @@ class SignUpViewModel @Inject constructor(private val authRepo: AuthService) : B
     val email: MutableStateFlow<String> = MutableStateFlow("")
     val password: MutableStateFlow<String> = MutableStateFlow("")
     val retypePassword: MutableStateFlow<String> = MutableStateFlow("")
+    private val formErrors = ObservableArrayList<String>()
+    private val confirmPassword: MutableStateFlow<String> = MutableStateFlow("")
 
     fun signUp() {
         if (Utils.validate(username.value, email.value, password.value,retypePassword.value)) {
@@ -48,6 +52,20 @@ class SignUpViewModel @Inject constructor(private val authRepo: AuthService) : B
             }
         }
 
+    }
+
+    fun isFormValid(): Boolean {
+        formErrors.clear()
+        if (!ValidationUtil.validateUserName(username.value)) {
+            formErrors.add("Invalid username")
+        } else if (!ValidationUtil.validateEmail(email.value)) {
+            formErrors.add("Invalid email")
+        } else if (!ValidationUtil.validatePassword(password.value)) {
+            formErrors.add("Invalid password")
+        } else if (confirmPassword.value != password.value) {
+            formErrors.add("Passwords do not match")
+        }
+        return formErrors.isEmpty()
     }
 
 

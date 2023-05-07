@@ -16,6 +16,14 @@ object ValidationUtil {
         return false
     }
 
+
+    fun validatePassword(password: String): Boolean {
+        if (Regex("[a-z\\d]{8,20}", RegexOption.IGNORE_CASE).matches(password)) {
+            return true
+        }
+        return false
+    }
+
     fun validateUserName(name :String): Boolean{
         if(Regex("[a-z\\d]{5,20}", RegexOption.IGNORE_CASE).matches(name)){
             return true
